@@ -19,4 +19,6 @@ FROM public.ecr.aws/docker/library/busybox as dest
 WORKDIR /
 COPY --from=getter /tmpdir /tmpproviders
 
-CMD ["cp", "-R", "/tmpproviders/", "/destination"]
+COPY script.sh /
+
+CMD ["script.sh"]
