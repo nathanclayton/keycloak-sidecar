@@ -21,4 +21,4 @@ COPY --from=getter /tmpdir /tmpproviders
 
 COPY script.sh /script.sh
 
-CMD ["sh", "-c", "script.sh"]
+CMD ["sh", "-c", "/script.sh"]
