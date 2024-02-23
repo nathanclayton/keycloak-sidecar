@@ -17,4 +17,4 @@ RUN curl -O https://github.com/sventorben/keycloak-home-idp-discovery/releases/d
 FROM public.ecr.aws/docker/library/busybox as dest
 COPY --from=getter /tmpdir /tmpproviders
 
-CMD ["cp", "-r", "/tmpproviders", "/destination"]
+CMD ["cp", "-r", "/tmpproviders/", "/destination"]
