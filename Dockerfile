@@ -14,7 +14,7 @@ RUN curl -O https://github.com/sventorben/keycloak-home-idp-discovery/releases/d
     chmod +rwx /tmpdir/tmp
 
 
-FROM public.ecr.aws/docker/library/busybox as dest
+FROM public.ecr.aws/debian/debian:latest as dest
 
 WORKDIR /
 COPY --from=getter /tmpdir /tmpproviders
