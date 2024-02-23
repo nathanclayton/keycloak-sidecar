@@ -9,9 +9,9 @@ WORKDIR /tmpdir
 
 RUN curl -O https://github.com/sventorben/keycloak-home-idp-discovery/releases/download/v23.0.0/keycloak-home-idp-discovery.jar && \
     curl -O https://github.com/aerogear/keycloak-metrics-spi/releases/download/5.0.0/keycloak-metrics-spi-5.0.0.jar && \
-    chmod +rx /tmpmount/*.jar && \
-    chmod +rwx /tmpmount/log && \
-    chmod +rwx /tmpmount/tmp
+    chmod +rx /tmpdir/*.jar && \
+    chmod +rwx /tmpdir/log && \
+    chmod +rwx /tmpdir/tmp
 
 
 FROM public.ecr.aws/docker/library/busybox as dest
