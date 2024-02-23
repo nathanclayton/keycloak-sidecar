@@ -1,0 +1,20 @@
+FROM public.ecr.aws/debian/debian:latest as getter
+
+RUN apt-get -y update && \
+    apt-get -y install curl && \
+    mkdir -p /tmpdir/log && \
+    mkdir -p /tmpdir/tmp
+
+WORKDIR /tmpdir
+
+RUN curl -O https://github.com/sventorben/keycloak-home-idp-discovery/releases/download/v23.0.0/keycloak-home-idp-discovery.jar && \
+    curl -O https://github.com/aerogear/keycloak-metrics-spi/releases/download/5.0.0/keycloak-metrics-spi-5.0.0.jar && \
+    chmod +rx /tmpmount/*.jar && \
+    chmod +rwx /tmpmount/log && \
+    chmod +rwx /tmpmount/tmp
+
+
+FROM public.ecr.aws/docker/library/busybox as dest
+COPY --from=getter /tmpdir /tmpproviders
+
+CMD ["cp", "-r", "/tmpproviders/*", "/destination"]
